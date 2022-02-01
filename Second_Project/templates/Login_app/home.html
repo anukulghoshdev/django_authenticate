@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "Login_app/base.html" %}
+
+{% load static %}
+
+<!-- {% block title %} django-home {% endblock %} -->
+{% block linkcss %}<link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<img src="/media/{{ user_more_info.profile_pic }}" width="200px">
+<p>{{ user_basic_info.username }}</p>
+<p>{{ user_basic_info.email }}</p>
+
+<p> <a href="{{ user_more_info.facebook_id }}">Facebook Profile</a> </p>
+
+{% else %}
+<div class="alert alert-danger">
+  You are not logged in! Please log in first!
+</div>
+{% endif %}
+
+{% endblock %}

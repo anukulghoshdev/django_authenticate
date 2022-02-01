@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "Login_app/base.html" %}
+
+{% load static %}
+
+<!-- {% block title %} django-home {% endblock %} -->
+{% block linkcss %}<link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
+
+
+
+{% block body %}
+
+<!-- {% if text_altert %}
+<div class="alert alert-danger">
+    <strong>{{ text_altert }}</strong>
+</div>
+{% endif %} -->
+
+<h3 class="text-center">Login</h3>
+
+<form action="{% url 'Login_app:user_login' %}"  method="POST">
+  {% csrf_token %}
+  <label for="username">Username</label>
+  <input class="form-control" type="text" name="username"   placeholder="Enter Username" required>
+
+  <label for="password">Password</label>
+  <input class="form-control" type="password" name="password"  placeholder="Enter Password" required>
+  <br>
+
+
+  <div class="text-center d-grid">
+    <input class="btn btn-primary btn-block" type="submit" name="" value="Login">
+  </div>
+
+</form>
+
+{% endblock %}
